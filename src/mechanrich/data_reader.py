@@ -1,11 +1,10 @@
 import pandas as pd
-from pathlib import Path
 from typing import Optional
 
-gene_file: Optional[str, Path] = "../../data/GSE164191.top.table.tsv"
-pathway_file: Optional[str, Path] = "../../data/TGF-beta_receptor_pathway.txt"
-mapping_file: Optional[str, Path] =  "../../data/gene_interaction_map.tsv"
-gene_data_cols = {"Gene.symbol": "gene_symbol", "logFC": "log_fold_change", "P.Value": "p_value"}
+gene_file: str = "../../data/GSE164191.top.table.tsv"
+pathway_file: str = "../../data/TGF-beta_receptor_pathway.txt"
+mapping_file: str = "../../data/gene_interaction_map.tsv"
+gene_data_cols = {"Gene.symbol": "gene_symbol", "logFC": "log_fold_change", "adj.P.Val": "p_value"}
 pathway_data_cols = {0: "source", 2: "target", 1: "relation"}
 mapping_data_cols = {"source": "source", "target": "target", "relation": "relation"}
 p_thred: float = 0.05
