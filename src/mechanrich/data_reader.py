@@ -10,6 +10,8 @@ pathway_data_cols = {0: "source", 2: "target", 1: "relation"}
 mapping_data_cols = {"source": "source", "target": "target", "relation": "relation"}
 p_thred: float = 0.05
 fc_thred: float = 0.5
+use_fake_pathway = True
+fake_pathway_num = 100 if use_fake_pathway else None
 
 
 def read_gene_data(gene_file: str) -> pd.DataFrame:

@@ -1,4 +1,5 @@
 from data_reader import *
+from utils import generate_fake_pathway
 
 def get_regulated_genes() -> tuple:
     """Generate up- and down-regulated genes"""
@@ -8,8 +9,13 @@ def get_regulated_genes() -> tuple:
     return upregu_genes, downregu_genes
 
 
-def get_edge_list() -> pd.DataFrame:
-    pathway = read_pathway_data(pathway_file)
-    gene_interaction_map = read_mapping_data(mapping_file)
-    edge_list = pathway.merge(gene_interaction_map, how="left", on=["source", "target"]).drop_duplicates().reset_index(drop=True)
+def get_edge_list(fake: bool = use_fake_pathway) -> pd.DataFrame:
+    if fake:
+        pathway = generate_fake_pathway(regulated_genes=get_regulated_genes(), k=fake_pathway_num)
+        gene_interaction_map = read_mapping_data(mapping_file)
+        edge_list = pathway.merge(gene_interaction_map, how="left", on=["source", "target"]).drop_duplicates().reset_index(drop=True)
+    else:
+        pathway = read_pathway_data(pathway_file)
+        gene_interaction_map = read_mapping_data(mapping_file)
+        edge_list = pathway.merge(gene_interaction_map, how="left", on=["source", "target"]).drop_duplicates().reset_index(drop=True)
     return edge_list
