@@ -3,6 +3,7 @@
 <p align="center">
   <img src="https://github.com///raw/main/docs/source/logo.png" height="150">
 </p>
+
 -->
 
 <h1 align="center">
@@ -40,7 +41,8 @@
     </a>
 </p>
 
-Mechanism enrichment using NeuroMMSig
+
+Python package for mechanism enrichment using NeuroMMSig.
 
 ## 💪 Getting Started
 
@@ -49,7 +51,7 @@ Make it as short as possible! You have an entire set of docs for later.
 
 ### Command Line Interface
 
-The enrichment command line tool is automatically installed. It can
+The mechanrich command line tool is automatically installed. It can
 be used from the shell with the `--help` flag to show all subcommands:
 
 ```shell
@@ -88,6 +90,7 @@ Contributions, whether filing an issue, making a pull request, or forking, are a
 The code in this package is licensed under the MIT License.
 
 <!--
+
 ### 📖 Citation
 
 Citation goes here!
@@ -131,7 +134,7 @@ The final section of the README is for if you want to get involved by making a c
 To install in development mode, use the following:
 
 ```bash
-$ git clone git+https://github.com//.git
+$ git clone https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig.git
 $ cd 
 $ pip install -e .
 ```
@@ -152,7 +155,7 @@ Additionally, these tests are automatically re-run with each commit in a [GitHub
 The documentation can be built locally using the following:
 
 ```shell
-$ git clone git+https://github.com//.git
+$ git clone https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig.git
 $ cd 
 $ tox -e docs
 $ open docs/build/html/index.html
