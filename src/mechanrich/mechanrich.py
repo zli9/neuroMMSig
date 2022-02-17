@@ -7,8 +7,10 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import numpy as np
 import pandas as pd
-import startup
-from preprocessing import PreProcessing
+
+import src.mechanrich.startup
+from src.mechanrich.preprocessing import PreProcessing
+from src.mechanrich.reader import DataReader
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.WARNING)
@@ -26,9 +28,10 @@ class RCR:
 
     def __preprocessing(self):
         p = PreProcessing()
+        reader = DataReader()
         self._upregu_genes = p.get_upregu_genes()
         self._downregu_genes = p.get_downregu_genes()
-        self.__pathway = p.get_pathway_with_interaction()
+        self.__pathway = reader.get_pathway()
 
     def _derive_kam_from_pathway(self):
         """Generate a KAM network from prior pathway knowledge."""
@@ -206,28 +209,50 @@ class RCRstat(RCR):
                 rich_all_hyps[ups_node] = rich
         return rich_all_hyps
 
-    def get_gene_conc(self, gene: str) -> Optional[float]:
+    def get_gene_conc(self, gene: str) -> Optional[str]:
         """
         Get the concordance of an upstream node
         :param gene: gene symbol of upstream node
-        :return: concordance if there is concordance, else None
+        :return: concordance if there is concordance
         """
-        return self._concs.get(gene)
+        if gene in self._weights.keys():
+            conc = self._concs.get(gene)
+            if conc:
+                return "{:.3f}".format(conc)
+        else:
+            print(f"No {gene} in full set. Please enter another gene symbol.")
+            logger.warning(f"No {gene} in full set.")
 
-    def get_gene_rich(self, gene: str) -> Optional[float]:
+    def get_gene_rich(self, gene: str) -> Optional[str]:
         """
         Get the richness of an upstream node
         :param gene: gene symbol of upstream node
         :return: richness
         """
-        return self._richs.get(gene)
+        if gene in self._weights.keys():
+            return "{:.2e}".format(self._richs.get(gene))
+        else:
+            print(f"No {gene} in full set. Please enter another gene symbol.")
+            logger.warning(f"No {gene} in full set.")
+
+    def get_stat(self, output: str = None):
+        stat = []
+        for gene, weight in self._weights.items():
+            conc = self.get_gene_conc(gene)
+            rich = self.get_gene_rich(gene)
+            stat.append((gene, weight, conc, rich))
+        stat_table = pd.DataFrame(stat, columns=["gene", "weight", "concordance", "richness"])
+        if output:
+            stat_table.to_csv(output, sep="\t", index=False, header=True)
+        else:
+            print(stat_table.to_markdown())
 
 
 class Graph(RCRstat):
     def __init__(self):
         super().__init__()
 
-    def plot_hyp(self, gene: str, output: str = None, dpi: int = 72) -> None:
+    def plot_hyp_network(self, gene: str, output: str = None, dpi: int = 72):
         """Plot HYP network."""
         hyp = self._infer_table[gene]
         G = nx.DiGraph({gene: hyp})
@@ -247,9 +272,9 @@ class Graph(RCRstat):
         for edge in G.edges:
             if hyp[edge[1]]["type"] is not None:
                 edge_width_map.append(5)
-                if hyp[edge[1]]["type"] == "correct" and hyp[edge[1]]["edge_rel"] == "inhibition":
+                if hyp[edge[1]]["type"] == "correct" and hyp[edge[1]]["causal_rel"] == "inhibition":
                     edge_color_map.append("green")
-                elif hyp[edge[1]]["type"] == "correct" and hyp[edge[1]]["edge_rel"] == "activation":
+                elif hyp[edge[1]]["type"] == "correct" and hyp[edge[1]]["causal_rel"] == "activation":
                     edge_color_map.append("red")
                 else:
                     edge_color_map.append("black")
@@ -269,24 +294,24 @@ class Graph(RCRstat):
             node_size=1500,
             alpha=0.8,
         )
-        plt.show()
         # print to file
         if output:
             self.__check_output(output)
             fig.savefig(output, dpi=dpi)
+        return plt
 
-    def plot_ori_network(self, output: str = None, dpi: int = 72) -> None:
+    def plot_ori_network(self, output: str = None, dpi: int = 72):
         """Plot pathway network."""
         fig = plt.figure(figsize=(10, 10), dpi=dpi)
         G_pos = nx.spring_layout(self._G, k=0.1)
         nx.draw_networkx(
             self._G, pos=G_pos, with_labels=True, node_color="orange", edge_color="grey", alpha=0.9
         )
-        plt.show()
         # print to file
         if output:
             self.__check_output(output)
             fig.savefig(output, dpi=dpi)
+        return plt
 
     def plot_full_network(self, output: str = None, dpi: int = 72):
         """Mapping regulation relationship to pathway network."""
@@ -323,12 +348,20 @@ class Graph(RCRstat):
         # draw graph
         fig = plt.figure(figsize=(20, 20), dpi=dpi)
         G_pos = nx.spring_layout(G, k=0.1)
-        nx.draw_networkx(G, pos=G_pos, width=edge_width_map, node_size=1000, node_color=node_color_map, edge_color=edge_color_map, connectionstyle='arc3, rad = 0.1')
-        plt.show()
+        nx.draw_networkx(
+            G,
+            pos=G_pos,
+            width=edge_width_map,
+            node_size=1000,
+            node_color=node_color_map,
+            edge_color=edge_color_map,
+            connectionstyle="arc3, rad = 0.1",
+        )
         # print to file
         if output:
             self.__check_output(output)
             fig.savefig(output, dpi=dpi)
+        return plt
 
     @staticmethod
     def __check_output(output_path: str) -> None:
@@ -336,11 +369,8 @@ class Graph(RCRstat):
         accepted_extensions = (".pdf", ".svg", ".png", ".jpg")
         output_extension = os.path.splitext(os.path.basename(output_path))[-1]
         if output_extension not in accepted_extensions:
-            logger.error(f"Wrong output file format passed: {output_extension}.\n"
-                         f'Graph image must be either ".pdf", ".svg", ".png", or ".jpg"!')
+            logger.error(
+                f"Wrong output file format passed: {output_extension}.\n"
+                f'Graph image must be either ".pdf", ".svg", ".png", or ".jpg"!'
+            )
             raise ValueError('Graph image must be either ".pdf", ".svg", ".png", or ".jpg"!')
-
-
-if __name__ == "__main__":
-    graph = Graph()
-    graph.plot_full_network(output="network.pdf")

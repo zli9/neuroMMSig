@@ -1,21 +1,36 @@
-from data_reader import *
-from utils import generate_fake_pathway
+import logging
 
-def get_regulated_genes() -> tuple:
-    """Generate up- and down-regulated genes"""
-    gene_set = read_gene_data(gene_file)
-    upregu_genes = gene_set[(gene_set["p_value"] < p_thred) & (gene_set["log_fold_change"] > fc_thred)].tolist()
-    downregu_genes = gene_set[(gene_set["p_value"] < p_thred) & (gene_set["log_fold_change"] < - fc_thred)].tolist()
-    return upregu_genes, downregu_genes
+from src.mechanrich.constants import FC_THRED, P_THRED
+from src.mechanrich.reader import DataReader
+
+logger = logging.getLogger(__name__)
+logger.setLevel(logging.INFO)
 
 
-def get_edge_list(fake: bool = use_fake_pathway) -> pd.DataFrame:
-    if fake:
-        pathway = generate_fake_pathway(regulated_genes=get_regulated_genes(), k=fake_pathway_num)
-        gene_interaction_map = read_mapping_data(mapping_file)
-        edge_list = pathway.merge(gene_interaction_map, how="left", on=["source", "target"]).drop_duplicates().reset_index(drop=True)
-    else:
-        pathway = read_pathway_data(pathway_file)
-        gene_interaction_map = read_mapping_data(mapping_file)
-        edge_list = pathway.merge(gene_interaction_map, how="left", on=["source", "target"]).drop_duplicates().reset_index(drop=True)
-    return edge_list
+class PreProcessing:
+    """Pre-processing dataframe of user input."""
+
+    def __init__(self):
+        reader = DataReader()
+        self.gene_set = reader.get_gene_set()
+        self.upregu_genes = None
+        self.downregu_genes = None
+
+        self.__ext_regu_genes()
+
+    def __ext_regu_genes(self):
+        """Extract up- and down-regulated genes"""
+        self.upregu_genes = self.gene_set.gene_symbol[
+            (self.gene_set["p_value"] < P_THRED) & (self.gene_set["log_fold_change"] > FC_THRED)
+        ].tolist()
+        self.downregu_genes = self.gene_set.gene_symbol[
+            (self.gene_set["p_value"] < P_THRED) & (self.gene_set["log_fold_change"] < -FC_THRED)
+        ].tolist()
+
+    def get_upregu_genes(self):
+        """Return up-regulated genes."""
+        return self.upregu_genes
+
+    def get_downregu_genes(self):
+        """Return down-regulated genes."""
+        return self.downregu_genes

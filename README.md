@@ -44,6 +44,7 @@
 
 Python package for mechanism enrichment using NeuroMMSig.
 
+---
 ## 💪 Getting Started
 
 > TODO show in a very small amount of space the **MOST** useful thing your package can do.
@@ -63,19 +64,17 @@ by `sphinx`.
 
 ## 🚀 Installation
 
-<!-- Uncomment this section after your first ``tox -e finish``
 The most recent release can be installed from
 [PyPI](https://pypi.org/project/enrichment/) with:
 
 ```bash
 $ pip install mechanrich
 ```
--->
 
 The most recent code and data can be installed directly from GitHub with:
 
 ```bash
-$ pip install git+https://github.com//.git
+$ pip install https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig.git
 ```
 
 ## 👐 Contributing
@@ -89,12 +88,11 @@ Contributions, whether filing an issue, making a pull request, or forking, are a
 
 The code in this package is licensed under the MIT License.
 
-<!--
 
 ### 📖 Citation
 
-Citation goes here!
--->
+Catlett, N.L., Bargnesi, A.J., Ungerer, S. et al. Reverse causal reasoning: applying qualitative causal knowledge to the interpretation of high-throughput data. BMC Bioinformatics 14, 340 (2013). https://doi.org/10.1186/1471-2105-14-340
+
 
 <!--
 ### 🎁 Support
@@ -104,22 +102,6 @@ This project has been supported by the following organizations (in alphabetical 
 - [Harvard Program in Therapeutic Science - Laboratory of Systems Pharmacology](https://hits.harvard.edu/the-program/laboratory-of-systems-pharmacology/)
 
 -->
-
-<!--
-### 💰 Funding
-
-This project has been supported by the following grants:
-
-| Funding Body                                             | Program                                                                                                                       | Grant           |
-|----------------------------------------------------------|-------------------------------------------------------------------------------------------------------------------------------|-----------------|
-| DARPA                                                    | [Automating Scientific Knowledge Extraction (ASKE)](https://www.darpa.mil/program/automating-scientific-knowledge-extraction) | HR00111990009   |
--->
-
-### 🍪 Cookiecutter
-
-This package was created with [@audreyfeldroy](https://github.com/audreyfeldroy)'s
-[cookiecutter](https://github.com/cookiecutter/cookiecutter) package using [@cthoyt](https://github.com/cthoyt)'s
-[cookiecutter-snekpack](https://github.com/cthoyt/cookiecutter-snekpack) template.
 
 ## 🛠️ For Developers
 
