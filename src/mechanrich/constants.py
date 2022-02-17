@@ -9,8 +9,8 @@ FC_THRED: float = 0.5
 IS_FAKE = False
 
 # file paths
-THIS_FILE = __file__
-ROOT_DIR: str = os.path.abspath(os.path.join(THIS_FILE, "../../.."))
+WORKING_DIR = os.path.dirname(os.path.abspath(__file__))
+ROOT_DIR: str = os.path.abspath(os.path.join(WORKING_DIR, "../.."))
 GEO_FILE: str = os.path.join(ROOT_DIR, "data/GSE164191.top.table.tsv")
 MAPPING_FILE: str = os.path.join(ROOT_DIR, "data/gene_interaction_map.tsv")
 if IS_FAKE:  # fake pathway for testing

@@ -42,13 +42,45 @@
 </p>
 
 
-Python package for mechanism enrichment using NeuroMMSig.
+Python package for mechanism enrichment using reverse causal reasoning (RCR).
 
 ---
 ## 💪 Getting Started
 
-> TODO show in a very small amount of space the **MOST** useful thing your package can do.
-Make it as short as possible! You have an entire set of docs for later.
+#### Prerequisites:
+
+- Gene expression experiment data
+- Pathway data of interest
+- Mapping table containing regulation information
+
+### 1. Get enriched network
+
+```python
+from mechanrich import mechanrich as mec
+
+graph = mec.Graph()
+
+# get an enriched pathway network
+graph.plot_full_network(output="pathway_network.pdf", dpi=300)
+
+# get a HYP network of SMAD2 gene
+graph.plot_hyp_network(gene="SMAD2", output="hyp_network_SMAD2.pdf", dpi=300)
+```
+
+### 2. Get statistics of RCR inference
+
+```python
+stat = mec.RCRstat()
+
+# get a statistics table
+stat.get_stat(output="stat.txt")
+
+# get concordance of HYP network of SMAD2 gene
+conc = stat.get_gene_conc(gene="SMAD2")
+
+# get richness of HYP network of SMAD2 gene
+rich = stat.get_gene_rich(gene="SMAD2")
+```
 
 ### Command Line Interface
 
@@ -65,16 +97,56 @@ by `sphinx`.
 ## 🚀 Installation
 
 The most recent release can be installed from
-[PyPI](https://pypi.org/project/enrichment/) with:
+[TestPyPI](https://test.pypi.org/project/mechanrich/) with:
 
 ```bash
-$ pip install mechanrich
+$ pip install -i https://test.pypi.org/simple/ mechanrich==0.0.3.dev0
 ```
 
 The most recent code and data can be installed directly from GitHub with:
 
 ```bash
 $ pip install https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig.git
+```
+
+## 📦 Project Structure
+
+```angular2html
+│  .bumpversion.cfg
+│  .gitignore
+│  .readthedocs.yml
+│  LICENSE
+│  MANIFEST.in
+│  pyproject.toml
+│  README.md
+│  setup.cfg
+│  tox.ini
+│  
+├─.github
+│          
+├─data
+│      
+├─docs
+│          
+├─src
+│  │  __init__.py
+│  │  
+│  └─mechanrich
+│          __init__.py
+│          __main__.py
+│          cli.py
+│          constants.py
+│          mechanrich.py
+│          preprocessing.py
+│          reader.py
+│          startup.py
+│          utils.py
+│          
+└─tests
+    │  __init__.py
+    │  test_mechanrich.py
+    │  
+    └─test_data
 ```
 
 ## 👐 Contributing
