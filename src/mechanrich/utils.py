@@ -3,10 +3,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 import networkx as nx
 
-def generate_fake_pathway(regulated_genes: tuple, k: int = 100) -> pd.DataFrame:
+def generate_fake_pathway(upregu_genes: list, downregu_genes: list, k: int = 5) -> pd.DataFrame:
+    """Generate a fake pathway given the number of interaction."""
     random.seed(0)
     relationship = ["activation", "inhibition"]
-    genes_in_pathway = regulated_genes[0] + regulated_genes[1]
+    genes_in_pathway = upregu_genes + downregu_genes
 
     # build pairwise fake edges
     pairwise_edges = []
@@ -25,6 +26,7 @@ def generate_fake_pathway(regulated_genes: tuple, k: int = 100) -> pd.DataFrame:
 
 
 def plot_network(G: nx.Graph):
+    """Plot pathway network."""
     plt.figure(figsize=(10, 10), dpi=72)
     G_pos = nx.spring_layout(G, k=0.1)
     nx.draw_networkx(G, pos=G_pos,
