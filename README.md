@@ -12,20 +12,20 @@
 
 
 <p align="center">
-    <a href="https://github.com///actions?query=workflow%3ATests">
-        <img alt="Tests" src="https://github.com///workflows/Tests/badge.svg" />
+    <a href="https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig/actions?query=workflow%3ATests">
+        <img alt="Tests" src="https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig/workflows/Tests/badge.svg" />
     </a>
-    <a href="https://pypi.org/project/enrichment">
+    <a href="https://test.pypi.org/project/mechanrich">
         <img alt="PyPI" src="https://img.shields.io/pypi/v/enrichment" />
     </a>
-    <a href="https://pypi.org/project/enrichment">
-        <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/enrichment" />
+    <a href="https://test.pypi.org/project/mechanrich">
+        <img alt="PyPI - Python Version" src="https://img.shields.io/pypi/pyversions/mechanrich" />
     </a>
-    <a href="https://github.com///blob/main/LICENSE">
-        <img alt="PyPI - License" src="https://img.shields.io/pypi/l/enrichment" />
+    <a href="https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig/blob/main/LICENSE">
+        <img alt="PyPI - License" src="https://img.shields.io/pypi/l/mechanrich" />
     </a>
     <a href='https://enrichment.readthedocs.io/en/latest/?badge=latest'>
-        <img src='https://readthedocs.org/projects/enrichment/badge/?version=latest' alt='Documentation Status' />
+        <img src='https://readthedocs.org/projects/mechanrich/badge/?version=latest' alt='Documentation Status' />
     </a>
     <a href="https://codecov.io/gh///branch/main">
         <img src="https://codecov.io/gh///branch/main/graph/badge.svg" alt="Codecov status" />
@@ -36,18 +36,17 @@
     <a href='https://github.com/psf/black'>
         <img src='https://img.shields.io/badge/code%20style-black-000000.svg' alt='Code style: black' />
     </a>
-    <a href="https://github.com///blob/main/.github/CODE_OF_CONDUCT.md">
+    <a href="https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig/blob/main/.github/CODE_OF_CONDUCT.md">
         <img src="https://img.shields.io/badge/Contributor%20Covenant-2.1-4baaaa.svg" alt="Contributor Covenant"/>
     </a>
 </p>
-
 
 Python package for mechanism enrichment using reverse causal reasoning (RCR).
 
 ---
 ## 💪 Getting Started
 
-#### Prerequisites:
+### Prerequisites
 
 - Gene expression experiment data
 - Pathway data of interest
@@ -91,16 +90,13 @@ be used from the shell with the `--help` flag to show all subcommands:
 $ mechanrich --help
 ```
 
-> TODO show the most useful thing the CLI does! The CLI will have documentation auto-generated
-by `sphinx`.
-
 ## 🚀 Installation
 
 The most recent release can be installed from
 [TestPyPI](https://test.pypi.org/project/mechanrich/) with:
 
 ```bash
-$ pip install -i https://test.pypi.org/simple/ mechanrich==0.0.3.dev0
+$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url  https://pypi.org/simple/ mechanrich==0.0.3.dev0
 ```
 
 The most recent code and data can be installed directly from GitHub with:
@@ -149,11 +145,6 @@ $ pip install https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig.git
     └─test_data
 ```
 
-## 👐 Contributing
-
-Contributions, whether filing an issue, making a pull request, or forking, are appreciated. See
-[CONTRIBUTING.md](https://github.com///blob/master/.github/CONTRIBUTING.md) for more information on getting involved.
-
 ## 👋 Attribution
 
 ### ⚖️ License
@@ -165,8 +156,8 @@ The code in this package is licensed under the MIT License.
 
 Catlett, N.L., Bargnesi, A.J., Ungerer, S. et al. Reverse causal reasoning: applying qualitative causal knowledge to the interpretation of high-throughput data. BMC Bioinformatics 14, 340 (2013). https://doi.org/10.1186/1471-2105-14-340
 
-
 <!--
+
 ### 🎁 Support
 
 This project has been supported by the following organizations (in alphabetical order):
