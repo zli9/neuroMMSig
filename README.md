@@ -43,6 +43,11 @@
 
 Python package for mechanism enrichment using reverse causal reasoning (RCR) algorithm. This algorithm allows for retrieving gene regulatory pathway associated with disease of interest.
 
+<p float="left">
+  <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2F1471-2105-14-340/MediaObjects/12859_2012_Article_6209_Fig1_HTML.jpg?as=webp" alt="" height="350">&nbsp
+  <img src="https://media.springernature.com/full/springer-static/image/art%3A10.1186%2F1471-2105-14-340/MediaObjects/12859_2012_Article_6209_Fig2_HTML.jpg?as=webp" alt="" height="250">
+</p>
+
 ---
 ## 💪 Getting Started
 
