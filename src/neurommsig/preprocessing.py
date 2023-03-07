@@ -1,7 +1,7 @@
 import logging
 
-from src.mechanrich.constants import FC_THRED, P_THRED
-from src.mechanrich.reader import DataReader
+from src.neurommsig.constants import FC_THRED, P_THRED
+from src.neurommsig.reader import DataReader
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.INFO)
