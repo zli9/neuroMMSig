@@ -1,4 +1,4 @@
-mechanrich |release| Documentation
+neurommsig |release| Documentation
 ==================================
 
 Cookiecutter
