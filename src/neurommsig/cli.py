@@ -1,14 +1,14 @@
 # -*- coding: utf-8 -*-
 
-"""Command line interface for :mod:`mechanrich`.
+"""Command line interface for :mod:`neurommsig`.
 
 Why does this file exist, and why not put this in ``__main__``? You might be tempted to import things from ``__main__``
 later, but that will cause problems--the code will get executed twice:
 
-- When you run ``python3 -m enrichment`` python will execute``__main__.py`` as a script.
-  That means there won't be any ``mechanrich.__main__`` in ``sys.modules``.
+- When you run ``python3 -m neurommsig`` python will execute``__main__.py`` as a script.
+  That means there won't be any ``neurommsig.__main__`` in ``sys.modules``.
 - When you import __main__ it will get executed again (as a module) because
-  there's no ``enrichment.__main__`` in ``sys.modules``.
+  there's no ``neurommsig.__main__`` in ``sys.modules``.
 
 .. seealso:: https://click.palletsprojects.com/en/7.x/setuptools/#setuptools-integration
 """
@@ -27,7 +27,7 @@ logger = logging.getLogger(__name__)
 @click.group()
 @click.version_option()
 def main():
-    """CLI for mechanrich."""
+    """CLI for neurommsig."""
 
 
 if __name__ == "__main__":
