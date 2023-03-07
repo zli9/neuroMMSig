@@ -22,9 +22,9 @@ sys.path.insert(0, os.path.abspath('../../src'))
 
 # -- Project information -----------------------------------------------------
 
-project = 'mechanrich'
-copyright = f'{date.today().year}, dmitry mikhaylov'
-author = 'dmitry mikhaylov'
+project = 'neurommsig'
+copyright = f'{date.today().year}, Zexin Li'
+author = 'Zexin Li'
 
 # The full version, including alpha/beta/rc tags.
 release = '0.0.1-dev'
@@ -50,7 +50,7 @@ if parsed_version.group('release'):
 add_module_names = False
 
 # A list of prefixes that are ignored when creating the module index. (new in Sphinx 0.6)
-modindex_common_prefix = ["mechanrich."]
+modindex_common_prefix = ["neurommsig."]
 
 # Add any Sphinx extension module names here, as strings. They can be
 # extensions coming with Sphinx (named 'sphinx.ext.*') or your custom
@@ -137,7 +137,7 @@ if os.path.exists('logo.png'):
 # -- Options for HTMLHelp output ---------------------------------------------
 
 # Output file base name for HTML help builder.
-htmlhelp_basename = 'mechanrichdoc'
+htmlhelp_basename = 'neurommsigdoc'
 
 # -- Options for LaTeX output ------------------------------------------------
 
@@ -165,8 +165,8 @@ htmlhelp_basename = 'mechanrichdoc'
 # latex_documents = [
 #     (
 #         master_doc,
-#         'mechanrich.tex',
-#         'mechanrich Documentation',
+#         'neurommsig.tex',
+#         'neurommsig Documentation',
 #         author,
 #         'manual',
 #     ),
@@ -179,8 +179,8 @@ htmlhelp_basename = 'mechanrichdoc'
 man_pages = [
     (
         master_doc,
-        'mechanrich',
-        'mechanrich Documentation',
+        'neurommsig',
+        'neurommsig Documentation',
         [author],
         1,
     ),
@@ -194,10 +194,10 @@ man_pages = [
 texinfo_documents = [
     (
         master_doc,
-        'mechanrich',
-        'mechanrich Documentation',
+        'neurommsig',
+        'neurommsig Documentation',
         author,
-        'dmitry mikhaylov',
+        'Zexin Li',
         'seminar',
         'Miscellaneous',
     ),
