@@ -1,11 +1,11 @@
 Installation
 ============
 The most recent release can be installed from
-`PyPI <https://pypi.org/project/mechanrich>`_ with:
+`PyPI <https://pypi.org/project/neurommsig>`_ with:
 
 .. code-block:: shell
 
-    $ pip install mechanrich
+    $ pip install neurommsig
 
 The most recent code and data can be installed directly from GitHub with:
 
