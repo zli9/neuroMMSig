@@ -1,4 +1,4 @@
 Usage
 =====
-.. automodule:: mechanrich.api
+.. automodule:: neurommsig.api
     :members:
