@@ -1,7 +1,7 @@
 import os
 from typing import Optional
 
-from src.mechanrich.utils import make_fake_pathway
+from src.neurommsig.utils import make_fake_pathway
 
 # parameters
 P_THRED: float = 0.01
