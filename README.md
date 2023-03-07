@@ -7,7 +7,7 @@
 -->
 
 <h1 align="center">
-  mechanrich
+  neurommsig
 </h1>
 
 
@@ -41,7 +41,7 @@
     </a>
 </p>
 
-Python package for mechanism enrichment using reverse causal reasoning (RCR).
+Python package for mechanism enrichment using reverse causal reasoning (RCR) algorithm. This algorithm allows for retrieving gene regulatory pathway associated with disease of interest.
 
 ---
 ## 💪 Getting Started
@@ -55,9 +55,9 @@ Python package for mechanism enrichment using reverse causal reasoning (RCR).
 ### 1. Get enriched network
 
 ```python
-from mechanrich import mechanrich as mec
+from neurommsig import neurommsig
 
-graph = mec.Graph()
+graph = neurommsig.Graph()
 
 # get an enriched pathway network
 graph.plot_full_network(output="pathway_network.pdf", dpi=300)
@@ -69,7 +69,7 @@ graph.plot_hyp_network(gene="SMAD2", output="hyp_network_SMAD2.pdf", dpi=300)
 ### 2. Get statistics of RCR inference
 
 ```python
-stat = mec.RCRstat()
+stat = neurommsig.RCRstat()
 
 # get a statistics table
 stat.get_stat(output="stat.txt")
@@ -87,22 +87,22 @@ The mechanrich command line tool is automatically installed. It can
 be used from the shell with the `--help` flag to show all subcommands:
 
 ```shell
-$ mechanrich --help
+$ neurommsig --help
 ```
 
 ## 🚀 Installation
 
 The most recent release can be installed from
-[TestPyPI](https://test.pypi.org/project/mechanrich/) with:
+[TestPyPI](https://test.pypi.org/project/neurommsig/) with:
 
 ```bash
-$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url  https://pypi.org/simple/ mechanrich==0.0.3.dev0
+$ pip install --index-url https://test.pypi.org/simple/ --extra-index-url  https://pypi.org/simple/ neurommsig==0.0.3.dev0
 ```
 
 The most recent code and data can be installed directly from GitHub with:
 
 ```bash
-$ pip install https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig.git
+$ pip install https://github.com/zli9/neuroMMSig.git
 ```
 
 ## 📦 Project Structure
@@ -127,12 +127,12 @@ $ pip install https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig.git
 ├─src
 │  │  __init__.py
 │  │  
-│  └─mechanrich
+│  └─neurommsig
 │          __init__.py
 │          __main__.py
 │          cli.py
 │          constants.py
-│          mechanrich.py
+│          neurommsig.py
 │          preprocessing.py
 │          reader.py
 │          startup.py
@@ -140,7 +140,7 @@ $ pip install https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig.git
 │          
 └─tests
     │  __init__.py
-    │  test_mechanrich.py
+    │  test_neurommsig.py
     │  
     └─test_data
 ```
