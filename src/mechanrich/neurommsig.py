@@ -7,9 +7,9 @@ import matplotlib.pyplot as plt
 import networkx as nx
 import pandas as pd
 
-import src.mechanrich.startup
-from src.mechanrich.preprocessing import PreProcessing
-from src.mechanrich.reader import DataReader
+import src.neurommsig.startup
+from src.neurommsig.preprocessing import PreProcessing
+from src.neurommsig.reader import DataReader
 
 logger = logging.getLogger(__name__)
 logger.setLevel(logging.WARNING)
