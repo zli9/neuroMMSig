@@ -2,11 +2,11 @@ import os
 
 import pytest
 
-from src.mechanrich.mechanrich import RCR, RCRstat, Graph
+from src.neurommsig.neurommsig import RCR, RCRstat, Graph
 
 
-class TestMechanrich:
-    """Tests for mechanrich.py."""
+class TestNeurommsig:
+    """Tests for neurommsig.py."""
 
     def testGraph(self):
         """Test for Graph class."""
