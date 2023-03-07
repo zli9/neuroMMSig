@@ -179,7 +179,7 @@ The final section of the README is for if you want to get involved by making a c
 To install in development mode, use the following:
 
 ```bash
-$ git clone https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig.git
+$ git clone https://github.com/zli9/neuroMMSig.git
 $ cd 
 $ pip install -e .
 ```
@@ -200,7 +200,7 @@ Additionally, these tests are automatically re-run with each commit in a [GitHub
 The documentation can be built locally using the following:
 
 ```shell
-$ git clone https://github.com/zli9/Mechanism-enrichment-using-NeuroMMSig.git
+$ git clone https://github.com/zli9/neuroMMSig.git
 $ cd 
 $ tox -e docs
 $ open docs/build/html/index.html
@@ -224,7 +224,7 @@ $ tox -e finish
 This script does the following:
 
 1. Uses [Bump2Version](https://github.com/c4urself/bump2version) to switch the version number in the `setup.cfg`,
-   `src/mechanrich/version.py`, and [`docs/source/conf.py`](docs/source/conf.py) to not have the `-dev` suffix
+   `src/neurommsig/version.py`, and [`docs/source/conf.py`](docs/source/conf.py) to not have the `-dev` suffix
 2. Packages the code in both a tar archive and a wheel using [`build`](https://github.com/pypa/build)
 3. Uploads to PyPI using [`twine`](https://github.com/pypa/twine). Be sure to have a `.pypirc` file configured to avoid the need for manual input at this
    step
