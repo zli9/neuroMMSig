@@ -65,12 +65,14 @@ graph.plot_full_network(output="pathway_network.pdf", dpi=300)
 # get a HYP network of SMAD2 gene
 graph.plot_hyp_network(gene="SMAD2", output="hyp_network_SMAD2.pdf", dpi=300)
 ```
-Example: Enriched pathway network
 
-![Enriched pathway network](./examples/pathway_network.pdf)
+**Example: HYP network of SMAD2 gene**
 
-Example: HYP network of SMAD2 gene
-![HYP network](./examples/hyp_network_SMAD2.pdf)
+<img src="./examples/hyp_network_SMAD2.jpg" alt="HYP network of SMAD2 gene" width="350" height="350">
+
+**Example: Enriched pathway network**
+
+<img src="./examples/pathway_network.jpg" alt="Enriched pathway network" width="600" height="600">
 
 ### 2. Get statistics of RCR inference
 
