@@ -2,7 +2,7 @@ import logging
 
 import pandas as pd
 
-from src.mechanrich.constants import (
+from src.neurommsig.constants import (
     GEO_FILE,
     GEO_FILE_COLS,
     MAPPING_FILE,
